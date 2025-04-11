@@ -7,7 +7,7 @@ use App\Http\Controllers\EmployeeController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
-use Carbon\Carbon;
+use App\Http\Controllers\LogsController;
 
 
 Route::get('devices', [DeviceController::class, 'Index'])->name('devices.index');
@@ -27,12 +27,9 @@ Route::get('/iclock/getrequest', [iclockController::class, 'getrequest']);
 Route::get('/', function () {
     return redirect('devices');
 });
-// shifts
-Route::resource('shifts', ShiftController::class)->except(['show', 'destroy']);
-//users
-Route::resource('employees', EmployeeController::class)->except(['destroy']);
 
-
+Route::get('/logs', [LogsController::class, 'viewLogs'])->name('view.logs');
+Route::get('/clear-logs', [LogsController::class, 'clearLogs'])->name('logs.clear');
 
 Route::get('time', function () {
     return [
