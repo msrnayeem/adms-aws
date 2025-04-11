@@ -16,7 +16,7 @@ jobs:
       - name: Set up SSH for EC2 access
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_MSRNAYEEMM }}" > ~/.ssh/id_rsa_ec2
+          echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_rsa_ec2
           chmod 600 ~/.ssh/id_rsa_ec2
           ssh-keyscan -t rsa 3.25.66.99 >> ~/.ssh/known_hosts
 
