@@ -139,7 +139,7 @@ class iclockController extends Controller
 
                     // Send data to the second external server (HRSoft - logging only info)
                     $response2 = Http::post("https://hrsoft.cloudvenus.net/api/receive-data", [
-                        'table'   => 'new_in_out_records',
+                        'table'   => 'in_out_records',
                         'records' => $attendanceRecords,
                     ]);
 
