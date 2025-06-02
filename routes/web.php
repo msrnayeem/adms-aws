@@ -8,7 +8,13 @@ use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\LogsController;
+use Illuminate\Support\Facades\Http;
 
+Route::get('/test-api-success', function () {
+    $response = Http::post('https://hrt.bluedreamgroup.com/api/check-success');
+
+    return response()->json($response->json());
+});
 
 Route::get('devices', [DeviceController::class, 'Index'])->name('devices.index');
 Route::get('devices-log', [DeviceController::class, 'DeviceLog'])->name('devices.DeviceLog');
